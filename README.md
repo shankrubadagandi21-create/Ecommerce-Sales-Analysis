@@ -6,7 +6,7 @@ data using SQL and Power BI.
 
 ## Power BI Dashboard Review
 
-![E-commerceSalesDashboard](dashboard.png)
+![E-commerce Sales Dashboard](./dashboard.png)
 
 ## Filles included
 -- customers.csv
