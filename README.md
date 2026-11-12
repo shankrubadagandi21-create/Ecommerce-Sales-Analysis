@@ -1,2 +1,3 @@
-# Ecommerce-Sales-Analysis
-Ecommerce Sales Analysis using SQL and Power BI
+## Power bi dashboard Preview
+![E-commerce Sales Dashboard]
+(dashboard.png)
