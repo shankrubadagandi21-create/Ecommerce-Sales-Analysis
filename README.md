@@ -23,6 +23,14 @@ data using SQL and Power BI.
 -- Power BI
 -- DAX
 
+## Project Tasks
+-- Created relational database tables.
+-- performed data validation and cleaning.
+-- Analyzed sales and customers data using SQL.
+-- Used joins, CTEs subqueries, and window functions.
+-- Created DAX measures in Power BI.
+-- Developed interactive business performance dashboard.
+
 ## Key Business KPIs
 -- Total Orders
 -- Delivered Orders
@@ -33,3 +41,16 @@ data using SQL and Power BI.
 -- Top 10 Products
 -- Revenue by Category
 -- Revenue by city
+
+## Project Files
+-- SQL queries
+-- CSV datasets
+-- Power BI report(.pbx)
+-- Dashboard Screenshot
+
+## Business Outcomes
+Developed a business performance report to help understand sales trends,product performance,and customer behavior
+
+## Author
+Data Analytics Project
+
