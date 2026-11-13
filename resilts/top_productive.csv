@@ -1,0 +1,13 @@
+-- Find th top 10 products
+SELECT pr.product_id,
+        pr.product_name,
+        o.status,
+       SUM(oi.quantity ) as units_sold,
+       SUM(oi.quantity * oi.unit_price) as revenue
+FROM products pr
+JOIN order_items oi ON pr.product_id = oi.product_id
+JOIN orders o ON oi.order_id = o.order_id
+WHERE o.status = 'Delivered'
+GROUP BY pr.product_id,pr.product_name
+ORDER BY revenue desc
+LIMIT 10;
