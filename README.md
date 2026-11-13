@@ -4,9 +4,9 @@
 This project analyzes e-commerce sales
 data using SQL and Power BI.
 
-## Power BI Dashboard Review
-
-![E-commerce Sales Dashboard](./dashboard.png)
+## Power BI Dashboard 
+![E-commerce Sales Dashboard]
+(Screenshots/04_sales_dashboard.png)
 
 ## Filles included
 -- customers.csv
