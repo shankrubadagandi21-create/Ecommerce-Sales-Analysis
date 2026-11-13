@@ -1,50 +1,4 @@
--- Find th top 10 products
-SELECT pr.product_id,
-        pr.product_name,
-        o.status,
-       SUM(oi.quantity ) as units_sold,
-       SUM(oi.quantity * oi.unit_price) as revenue
-FROM products pr
-JOIN order_items oi ON pr.product_id = oi.product_id
-JOIN orders o ON oi.order_id = o.order_id
-WHERE o.status = 'Delivered'
-GROUP BY pr.product_id,pr.product_name
-ORDER BY revenue desc
-LIMIT 10;
-
--- Calculate city wise revenue
-SELECT c.city,
-       o.status,
-       SUM(oi.quantity * oi.unit_price) as revenue
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-JOIN order_items oi ON o.order_id = oi.order_id
-WHERE o.status = 'Delivered'
-GROUP BY c.city,o.status
-ORDER BY revenue desc;
-
--- identify repeat customers
-select c.customer_id,
-       c.customer_name,
-       o.status,
-       COUNT(DISTINCT o.order_id) AS total_orders
-FROM customers c
-JOIN orders o ON c.customer_id = o.customer_id
-WHERE o.status = 'Delivered'
-GROUP BY c.customer_id,c.customer_name
-HAVING COUNT(DISTINCT o.order_id) >1;
-
--- Calculate monthly revenue
-SELECT
-      DATE_FORMAT(o.order_date,'%Y-%m') AS sales_month,
-      SUM(oi.quantity * oi.unit_price) AS monthly_revenue
-FROM orders o 
-JOIN order_items oi ON o.order_id = oi.order_id
-WHERE o.status = 'Delivered'
-GROUP BY DATE_FORMAT(o.order_date,'%Y-%m')
-ORDER BY sales_month desc;
-
--- Calculate Average order values
+ -- Calculate Average order values
 WITH order_revenue AS (
      SELECT
           o.order_id,
@@ -58,7 +12,7 @@ SELECT
       AVG(order_total) As average_ordr_value
 FROM order_revenue;
 
---  Rank products by revenue
+-- Q9. Rank products by revenue
 WITH product_sales AS (
    SELECT
        pr.product_id,
@@ -76,7 +30,7 @@ SELECT
     DENSE_RANK() OVER (ORDER BY revenue desc) as revenue_rank
 FROM product_sales;
 
--- Calculate month - over - month revenue change
+-- Q10. Calculate month - over - month revenue change
 WITH monthly_sales AS (
      SELECT 
            DATE_FORMAT(o.order_date,'%Y-%m') as sales_month,
