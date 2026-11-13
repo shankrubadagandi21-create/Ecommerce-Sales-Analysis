@@ -1,0 +1,33 @@
+-- Calculate monthly revenue
+SELECT
+      DATE_FORMAT(o.order_date,'%Y-%m') AS sales_month,
+      SUM(oi.quantity * oi.unit_price) AS monthly_revenue
+FROM orders o 
+JOIN order_items oi ON o.order_id = oi.order_id
+WHERE o.status = 'Delivered'
+GROUP BY DATE_FORMAT(o.order_date,'%Y-%m')
+ORDER BY sales_month desc;
+
+-- Calculate month - over - month revenue change
+WITH monthly_sales AS (
+     SELECT 
+           DATE_FORMAT(o.order_date,'%Y-%m') as sales_month,
+            SUM(oi.quantity * oi.unit_price) AS revenue
+     FROM orders o 
+     JOIN order_items oi ON o.order_id = oi.order_id
+     WHERE o.status = 'Delivered'
+     GROUP BY DATE_FORMAT(o.order_date, '%Y-%m')
+),
+sales_comparison AS (
+  SELECT
+        sales_month,
+        revenue,
+        LAG(revenue) OVER (ORDER BY sales_month asc) as privious_month_revenue
+  FROM monthly_sales
+)
+SELECT 
+     sales_month,
+     revenue,
+     privious_month_revenue,
+     revenue - privious_month_revenue As revenue_change
+FROM sales_comparison;
