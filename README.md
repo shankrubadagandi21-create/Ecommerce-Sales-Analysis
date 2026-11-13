@@ -6,7 +6,7 @@ data using SQL and Power BI.
 
 ## Power BI Dashboard 
 ![E-commerce Sales Dashboard]
-(Screenshots/04_sales_dashboard.png)
+(screenshots/04_sales_dashboard.png)
 
 ## Filles included
 -- customers.csv
