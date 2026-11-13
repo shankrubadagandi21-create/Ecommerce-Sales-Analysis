@@ -1,4 +1,4 @@
-Find total delivered orders
+--Find total delivered orders
 SELECT
      COUNT(*) as completed_orders
 FROM orders
